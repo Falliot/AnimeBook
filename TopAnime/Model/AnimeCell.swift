@@ -7,29 +7,24 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AnimeCell: UITableViewCell {
 
   @IBOutlet weak var nameLbl: UILabel!
-  @IBOutlet weak var ratingLbl: UILabel!
-  @IBOutlet weak var startDate: UILabel!
+  @IBOutlet weak var imgView: UIImageView!
+  
   
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    labelColor(labels: nameLbl, ratingLbl, startDate)
+    
     }
   
-  func labelColor(labels: UILabel...) {
-    for label in labels {
-      label.textColor = .black
-    }
-  }
-  
-  func setupAnimeCell(_ anime: Top) {
+  func setupAnimeCell(_ anime: TopAnimeManga) {
     self.nameLbl?.text = anime.title
-    self.ratingLbl?.text = "Score: \(anime.score)"
-    self.startDate?.text = anime.startDate
+    self.imgView.kf.setImage(with: URL(string: anime.imageURL))
+    
   }
   
   

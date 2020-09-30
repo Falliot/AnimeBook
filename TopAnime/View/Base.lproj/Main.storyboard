@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIc-gM-k5q">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Anime Table View Controller-->
+        <!--Anime Manga Table View Controller-->
         <scene sceneID="Js4-hN-bpS">
             <objects>
-                <tableViewController id="0hL-v6-7X4" customClass="AnimeTableViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0hL-v6-7X4" customClass="AnimeMangaTableViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zsD-16-0ia">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="KXF-sC-reh" customClass="AnimeCell" customModule="TopAnime" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KXF-sC-reh" id="QJo-qy-ufd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -51,22 +50,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiL-5U-INO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="978"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="1056"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txx-mK-gSJ" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tf4-30-iXn">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="544"/>
-                                            </imageView>
-                                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAN-7L-cKa">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="544"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eLL-2X-bOg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="544"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                                <blurEffect style="dark"/>
-                                            </visualEffectView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Br7-WX-r1P">
                                                 <rect key="frame" x="10" y="8" width="59" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="25"/>
@@ -225,24 +213,15 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="Br7-WX-r1P" firstAttribute="top" secondItem="txx-mK-gSJ" secondAttribute="top" constant="8" id="07o-Hu-UDU"/>
                                             <constraint firstAttribute="trailing" secondItem="Za8-c3-3Bb" secondAttribute="trailing" constant="15" id="50b-RL-4lm"/>
                                             <constraint firstItem="7NJ-rX-GnT" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="BHI-fr-X8M"/>
-                                            <constraint firstAttribute="trailing" secondItem="Tf4-30-iXn" secondAttribute="trailing" id="CYN-WZ-U6y"/>
                                             <constraint firstItem="7NJ-rX-GnT" firstAttribute="top" secondItem="Br7-WX-r1P" secondAttribute="bottom" priority="900" constant="20" id="F2T-hs-bK7"/>
-                                            <constraint firstItem="aAN-7L-cKa" firstAttribute="top" secondItem="Tf4-30-iXn" secondAttribute="top" id="Okj-Gn-5Yy"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="top" secondItem="Br7-WX-r1P" secondAttribute="bottom" priority="900" constant="20" id="Qyv-rB-FN5"/>
-                                            <constraint firstItem="aAN-7L-cKa" firstAttribute="trailing" secondItem="Tf4-30-iXn" secondAttribute="trailing" id="Wr1-u6-MYf"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="height" secondItem="7NJ-rX-GnT" secondAttribute="height" id="WvL-f9-V7h"/>
-                                            <constraint firstItem="Tf4-30-iXn" firstAttribute="top" secondItem="txx-mK-gSJ" secondAttribute="top" id="gUk-NM-O2d"/>
                                             <constraint firstAttribute="height" constant="1000" id="hbC-5r-YpN"/>
-                                            <constraint firstItem="aAN-7L-cKa" firstAttribute="leading" secondItem="Tf4-30-iXn" secondAttribute="leading" id="lmY-Zi-YDr"/>
-                                            <constraint firstItem="aAN-7L-cKa" firstAttribute="bottom" secondItem="Tf4-30-iXn" secondAttribute="bottom" id="ote-FG-pWv"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="leading" secondItem="7NJ-rX-GnT" secondAttribute="trailing" constant="10" id="phd-dZ-9ln"/>
-                                            <constraint firstAttribute="bottom" secondItem="Tf4-30-iXn" secondAttribute="bottom" constant="456" id="qMz-0g-5Ar"/>
-                                            <constraint firstItem="Tf4-30-iXn" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" id="wfS-mZ-pPy"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Br7-WX-r1P" secondAttribute="trailing" constant="20" symbolic="YES" id="xJ9-yQ-Huw"/>
                                             <constraint firstItem="Br7-WX-r1P" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="z9X-LA-DKP"/>
                                         </constraints>
@@ -271,7 +250,6 @@
                     <navigationItem key="navigationItem" id="thi-2L-W7g"/>
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
-                        <outlet property="backgroundImg" destination="Tf4-30-iXn" id="I7t-Lf-cJF"/>
                         <outlet property="episodesLbl" destination="rxZ-FM-U19" id="0Yq-JY-o9o"/>
                         <outlet property="genreLbl" destination="Kwb-By-YYq" id="1zG-PH-jyP"/>
                         <outlet property="imgView" destination="7NJ-rX-GnT" id="Fp9-zg-CPY"/>
