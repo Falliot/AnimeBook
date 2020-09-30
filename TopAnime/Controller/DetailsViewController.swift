@@ -21,29 +21,53 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var scoreLbl: UILabel!
   @IBOutlet weak var rankLbl: UILabel!
   
-  @IBOutlet weak var backgroundImg: UIImageView!
-  
-  var anime: Top?
+  var anime: AnimeModel?
+  var animeManager = AnimeManager()
   
   var url : URL? {
-    return URL(string: anime!.imageURL)
+    return URL(string: anime!.animeImage)
   }
 
   override func viewDidLoad() {
         super.viewDidLoad()
-    title = anime?.title
-    imgView.kf.setImage(with: url)
-    backgroundImg.kf.setImage(with: url)
-    setupLabels()
-      
-    }
-  
-  func setupLabels() {
-    titleLbl.text = anime?.title
-//    typeLbl.text = anime.
-    premieredLbl.text = anime?.startDate
-    episodesLbl.text = String(describing: (anime?.episodes)!)
-    scoreLbl.text = String(describing: (anime?.score)!)
-    rankLbl.text = String(describing: (anime?.rank)!)
+    title = anime?.animeName
+//    imgView.kf.setImage(with: url)
+    
+//    setupLabels()
+//    setupBackground()
+
   }
+  
+//  func setupLabels() {
+//    titleLbl.text = anime?.title
+//    typeLbl.text = anime.
+//    premieredLbl.text = anime?.startDate
+//    episodesLbl.text = String(describing: (anime?.episodes)!)
+//    scoreLbl.text = String(describing: (anime?.score)!)
+//    rankLbl.text = String(describing: (anime?.rank)!)
+//  }
+//
+//  func setupBackground() {
+//    let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
+//    backgroundImg.kf.setImage(with: url)
+//    backgroundImg.contentMode = .scaleAspectFill
+//    view.insertSubview(backgroundImg, at: 0)
+//
+//    let blurEffect = UIBlurEffect(style: .dark)
+//    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//    blurEffectView.frame = backgroundImg.frame
+//    view.insertSubview(blurEffectView, at: 1)
+//  }
+//
+}
+extension DetailsViewController: AnimeManagerDelegate {
+  func didFetchAnimeData(_ animeManager: AnimeManager, _ animeData: AnimeModel) {
+    anime = animeData
+  }
+  
+  func didFailWithError(_ error: Error) {
+    print("AnimeManagerError: \(error)")
+  }
+  
+  
 }

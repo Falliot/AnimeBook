@@ -21,7 +21,7 @@ class AnimeMangaTableViewController: UITableViewController {
     animeTableView.register(UINib(nibName: K.cellIdentifier, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
     
     request.delegate = self
-    request.fetchTop(topType: "manga")
+    request.fetchTop(topType: "anime")
     
   }
   
@@ -36,7 +36,7 @@ class AnimeMangaTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let destination = segue.destination as? DetailsViewController {
       let index = tableView.indexPathForSelectedRow?.row
-      
+      destination.animeManager.fetchAnime(animeID: "\(animeMangaList[index!].id)")
     }
   }
   

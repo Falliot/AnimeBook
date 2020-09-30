@@ -17,10 +17,10 @@ struct AnimeModel {
   let animeJapanName: String
   let animeOtherNames: [String]
   let animeType: String
-  let animeEpisodes: Int
+  let animeEpisodes: String
   let animeStatus: String
   let animeScore: String
-  let animePopularity: Int
+  let animePopularity: String
   let animeDetails: String
   let animePremire: String
   let animeGenre: [Genre]

@@ -15,9 +15,9 @@ struct AnimeData: Decodable {
   let trailer: String
   let name: String
   let japanName: String
-  let otherNames: [String]
+  let otherNames: [String]?
   let type: String
-  let episodes: Int
+  let episodes: Int?
   let status: String
   let score: Double
   let popularity: Int
