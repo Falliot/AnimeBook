@@ -34,6 +34,14 @@ struct AnimeManager {
         return
       }
       
+      if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers),
+         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
+          print(String(decoding: jsonData, as: UTF8.self))
+      } else {
+          print("json data malformed")
+      }
+      
+      
       if let safeData = data {
         if let anime = self.decodeJSON(animeData: safeData) {
           self.delegate?.didFetchAnimeData(self, anime)
@@ -59,16 +67,31 @@ struct AnimeManager {
     
     let webPage = animeData.webPage
     let imageURL = animeData.imageURL
-    let trailer = animeData.trailer
     let title = animeData.name
     let japanTitle = animeData.japanName
     let type = animeData.type
     let status = animeData.status
     let details = animeData.details
-    let premiere = animeData.premiered
+    var premiered: String
+    var trailer: String
     var episodes: String
     var otherNames = [String]()
     var genres = [String]()
+    var studios = [String]()
+    
+    
+    if animeData.premiered != nil {
+      premiered = animeData.premiered!
+    } else {
+      premiered = "No Info"
+    }
+    
+    
+    if animeData.trailer != nil {
+      trailer = animeData.trailer!
+    } else {
+      trailer = "No Trailer"
+    }
     
     var score: String {
       return String(format: "%.2f", animeData.score)
@@ -78,8 +101,10 @@ struct AnimeManager {
       return String(animeData.popularity)
     }
     
+    var rank = "\(animeData.rank)"
+    
     if animeData.episodes != nil {
-      episodes = "\(String(describing: animeData.episodes))"
+      episodes = "\(animeData.episodes!)"
     } else {
       episodes = "Still airing"
     }
@@ -92,14 +117,23 @@ struct AnimeManager {
     
     
     if animeData.genre != nil {
-      for genre in animeData.genre {
+      for genre in animeData.genre! {
         genres.append(genre.name)
       }
     } else {
       genres.append("Unknown")
     }
     
-    let anime = AnimeModel(animePage: webPage, animeImage: imageURL, animeTrailer: trailer, animeName: title, animeJapanName: japanTitle, animeOtherNames: otherNames, animeType: type, animeEpisodes: episodes, animeStatus: status, animeScore: score, animePopularity: popularity, animeDetails: details, animePremire: premiere, animeGenre: genres)
+    if animeData.studio != nil {
+      for studio in animeData.studio {
+        studios.append(studio.name)
+      }
+    } else {
+      studios.append("Unknown")
+    }
+    
+    
+    let anime = AnimeModel(animePage: webPage, animeImage: imageURL, animeTrailer: trailer, animeName: title, animeJapanName: japanTitle, animeOtherNames: otherNames, animeType: type, animeEpisodes: episodes, animeStatus: status, animeScore: score, animePopularity: popularity, animeDetails: details, animePremire: premiered, animeGenre: genres, animeStudio: studios, animeRank: rank)
     return anime
   }
 }
