@@ -44,26 +44,30 @@ struct AnimeData: Decodable {
     
     case genre = "genres"
   }
+  
+//  init(from decoder: Decoder) throws {
+//  let container = try decoder.container(keyedBy: CodingKeys.self)
+//  webPage = try container.decode(String.self, forKey: .webPage)
+//  imageURL = try  container.decode(String.self, forKey: .imageURL)
+//  trailer = try container.decode(String.self, forKey: .trailer)
+//  name = try container.decode(String.self, forKey: .name)
+//  japanName = try container.decode(String.self, forKey: .japanName)
+//  otherNames = try container.decode([String].self, forKey: .otherNames)
+//  type = try container.decode(String.self, forKey: .type)
+//  episodes = try container.decode(Int.self, forKey: .episodes)
+//  status = try container.decode(String.self, forKey: .status)
+//  score = try container.decode(Double.self, forKey: .score)
+//  popularity = try container.decode(Int.self, forKey: .popularity)
+//  details = try container.decode(String.self, forKey: .details)
+//  premiered = try container.decode(String.self, forKey: .premiered)
+//  genre = try container.decode([Genre].self, forKey: .genre)
+//
+//  }
+//  
+//  
 }
 
 struct Genre : Decodable {
   let name: String
 }
 
-//init(from decoder: Decoder) throws {
-//    let container = try decoder.container(keyedBy: CodingKeys.self)
-//    webPage = try container.decode(String.self, forKey: .webPage)
-//    imageURL = try  container.decode(String.self, forKey: .imageURL)
-//    trailer = try container.decode(String.self, forKey: .trailer)
-//    name = try container.decode(String.self, forKey: .name)
-//    japanName = try container.decode(String.self, forKey: .japanName)
-//    otherNames = try container.decode([String].self, forKey: .otherNames)
-//    type = try container.decode(String.self, forKey: .type)
-//    episodes = try container.decode(Int.self, forKey: .episodes)
-//    status = try container.decode(String.self, forKey: .status)
-//    score = try container.decode(Double.self, forKey: .score)
-//    popularity = try container.decode(Int.self, forKey: .popularity)
-//    details = try container.decode(String.self, forKey: .details)
-//    premiered = try container.decode(String.self, forKey: .premiered)
-//    genre = try container.decode([Genre].self, forKey: .genre)
-//

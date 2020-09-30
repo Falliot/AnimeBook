@@ -47,7 +47,6 @@ struct AnimeManager {
     let decoder = JSONDecoder()
     do {
       let decodedData = try decoder.decode(AnimeData.self, from: animeData)
-      print(decodedData)
       let anime = setupAnime(animeData: decodedData)
       return anime
     } catch {
@@ -67,10 +66,9 @@ struct AnimeManager {
     let status = animeData.status
     let details = animeData.details
     let premiere = animeData.premiered
-    let genres = animeData.genre
     var episodes: String
     var otherNames = [String]()
-    
+    var genres = [String]()
     
     var score: String {
       return String(format: "%.2f", animeData.score)
@@ -90,6 +88,15 @@ struct AnimeManager {
       otherNames = animeData.otherNames!
     } else {
       otherNames.append("No other names")
+    }
+    
+    
+    if animeData.genre != nil {
+      for genre in animeData.genre {
+        genres.append(genre.name)
+      }
+    } else {
+      genres.append("Unknown")
     }
     
     let anime = AnimeModel(animePage: webPage, animeImage: imageURL, animeTrailer: trailer, animeName: title, animeJapanName: japanTitle, animeOtherNames: otherNames, animeType: type, animeEpisodes: episodes, animeStatus: status, animeScore: score, animePopularity: popularity, animeDetails: details, animePremire: premiere, animeGenre: genres)

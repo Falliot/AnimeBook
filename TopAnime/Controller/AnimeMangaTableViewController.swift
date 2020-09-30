@@ -36,7 +36,7 @@ class AnimeMangaTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let destination = segue.destination as? DetailsViewController {
       let index = tableView.indexPathForSelectedRow?.row
-      destination.animeManager.fetchAnime(animeID: "\(animeMangaList[index!].id)")
+      destination.parentAnime = animeMangaList[index!]
     }
   }
   

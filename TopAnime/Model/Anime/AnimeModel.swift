@@ -23,6 +23,6 @@ struct AnimeModel {
   let animePopularity: String
   let animeDetails: String
   let animePremire: String
-  let animeGenre: [Genre]
+  let animeGenre: [String]
   
 }

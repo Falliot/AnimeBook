@@ -9,8 +9,12 @@
 import UIKit
 import Kingfisher
 
-class DetailsViewController: UIViewController {
-
+class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
+  
+  //For working ActivityIndicator
+  var greyView = UIView()
+  var activityIndicator = UIActivityIndicatorView()
+  
   @IBOutlet weak var imgView: UIImageView!
   
   @IBOutlet weak var titleLbl: UILabel!
@@ -21,44 +25,59 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var scoreLbl: UILabel!
   @IBOutlet weak var rankLbl: UILabel!
   
+  var parentAnime: TopAnimeManga?
   var anime: AnimeModel?
   var animeManager = AnimeManager()
   
   var url : URL? {
-    return URL(string: anime!.animeImage)
-  }
-
-  override func viewDidLoad() {
-        super.viewDidLoad()
-    title = anime?.animeName
-//    imgView.kf.setImage(with: url)
-    
-//    setupLabels()
-//    setupBackground()
-
+    return URL(string: parentAnime!.imageURL)
   }
   
-//  func setupLabels() {
-//    titleLbl.text = anime?.title
-//    typeLbl.text = anime.
-//    premieredLbl.text = anime?.startDate
-//    episodesLbl.text = String(describing: (anime?.episodes)!)
-//    scoreLbl.text = String(describing: (anime?.score)!)
-//    rankLbl.text = String(describing: (anime?.rank)!)
-//  }
-//
-//  func setupBackground() {
-//    let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
-//    backgroundImg.kf.setImage(with: url)
-//    backgroundImg.contentMode = .scaleAspectFill
-//    view.insertSubview(backgroundImg, at: 0)
-//
-//    let blurEffect = UIBlurEffect(style: .dark)
-//    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//    blurEffectView.frame = backgroundImg.frame
-//    view.insertSubview(blurEffectView, at: 1)
-//  }
-//
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    showActivityIndicator()
+    animeManager.delegate = self
+    animeManager.fetchAnime(animeID: "\(parentAnime!.id)")
+    
+    imgView.kf.setImage(with: url)
+    setupBackground()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(true)
+    setupLabels()
+    self.hideActivityIndicator()
+  }
+  
+  
+  func setupLabels() {
+    titleLbl.text = anime?.animeName
+    typeLbl.text = anime?.animeType
+    premieredLbl.text = anime?.animePremire
+    episodesLbl.text = anime?.animeEpisodes
+    scoreLbl.text = anime?.animeScore
+    rankLbl.text = anime?.animePopularity
+    genreLbl.text = anime?.animeGenre.joined(separator: ", ")
+  }
+  
+  func setupBackground() {
+    let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
+    backgroundImg.kf.setImage(with: url)
+    backgroundImg.contentMode = .scaleAspectFill
+    view.insertSubview(backgroundImg, at: 0)
+    
+    let blurEffect = UIBlurEffect(style: .dark)
+    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    blurEffectView.frame = backgroundImg.frame
+    view.insertSubview(blurEffectView, at: 1)
+  }
+  
 }
 extension DetailsViewController: AnimeManagerDelegate {
   func didFetchAnimeData(_ animeManager: AnimeManager, _ animeData: AnimeModel) {
