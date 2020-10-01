@@ -24,6 +24,12 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   @IBOutlet weak var genreLbl: UILabel!
   @IBOutlet weak var scoreLbl: UILabel!
   @IBOutlet weak var rankLbl: UILabel!
+  @IBOutlet weak var studioLbl: UILabel!
+  @IBOutlet weak var synopisLbl: UILabel!
+  @IBOutlet weak var japanNameLbl: UILabel!
+  @IBOutlet weak var engNameLbl: UILabel!
+  @IBOutlet weak var otherNamesLbl: UILabel!
+  @IBOutlet weak var airedLbl: UILabel!
   
   var parentAnime: TopAnimeManga?
   var anime: AnimeModel?
@@ -42,6 +48,11 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
     
     imgView.kf.setImage(with: url)
     setupBackground()
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(_:)))
+    synopisLbl.addGestureRecognizer(tap)
+    synopisLbl.numberOfLines = 5
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -62,8 +73,23 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
     premieredLbl.text = anime?.animePremire
     episodesLbl.text = anime?.animeEpisodes
     scoreLbl.text = anime?.animeScore
-    rankLbl.text = anime?.animePopularity
+    rankLbl.text = "#" + "\(anime!.animeRank)"
     genreLbl.text = anime?.animeGenre.joined(separator: ", ")
+    studioLbl.text = anime?.animeStudio.joined(separator: ", ")
+    synopisLbl.text = anime?.animeDetails
+    japanNameLbl.text = anime?.animeJapanName
+    engNameLbl.text = anime?.animeName
+    otherNamesLbl.text = anime?.animeOtherNames.joined(separator: ", ")
+    airedLbl.text = anime!.animeAired
+  }
+  
+@objc func tapLabel(_ tapGesture: UITapGestureRecognizer) {
+     if let label = tapGesture.view as? UILabel {
+       label.numberOfLines = label.numberOfLines == 0 ? 5 : 0
+      UIView.animate(withDuration: 0.5) {
+        label.superview?.layoutIfNeeded()
+       }
+     }
   }
   
   func setupBackground() {
@@ -87,6 +113,4 @@ extension DetailsViewController: AnimeManagerDelegate {
   func didFailWithError(_ error: Error) {
     print("AnimeManagerError: \(error)")
   }
-  
-  
 }
