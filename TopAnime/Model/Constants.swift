@@ -14,6 +14,17 @@ struct K {
   static let animeMangaTopURL = "https://api.jikan.moe/v3/top/"
   static let animeURL = "https://api.jikan.moe/v3/anime/"
   static let mangaURL = "https://api.jikan.moe/v3/manga/"
-  static let segueIdentifier = "toDetails"
+  
+  
+  struct SegueIdentifiers {
+    static let toDetails = "toDetails"
+    static let fromAnime = "fromAnime"
+    static let fromManga = "fromManga"
+  }
+  
+  struct VCTitle {
+    static let animeVC = "AnimeVC"
+    static let mangaVC = "MangaVC"
+  }
   
 }

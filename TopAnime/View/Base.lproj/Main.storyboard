@@ -1,25 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIc-gM-k5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Dp-on-zjY">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Anime Manga Table View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="VXm-Yk-iIn">
+            <objects>
+                <tabBarController id="3Dp-on-zjY" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3PM-bh-xG1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="FaB-Fc-Qh0" kind="relationship" relationship="viewControllers" id="pys-bS-fnR"/>
+                        <segue destination="I6y-a2-BbY" kind="relationship" relationship="viewControllers" id="CGk-IT-Lpz"/>
+                        <segue destination="NRg-jv-1gG" kind="relationship" relationship="viewControllers" id="iu2-pY-8UE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5YN-Ba-mSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="-1491"/>
+        </scene>
+        <!--AnimeVC-->
+        <scene sceneID="z1J-FS-iST">
+            <objects>
+                <viewController title="AnimeVC" id="uYD-8S-Yhz" customClass="MainViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q7t-xr-jWE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-S5-dAp">
+                                <rect key="frame" x="172" y="433" width="70" height="30"/>
+                                <state key="normal" title="Top Rated">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="topRatedBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="5xv-CF-Okj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.9739323258" green="0.454769969" blue="0.062217585739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5DT-S5-dAp" firstAttribute="centerX" secondItem="q7t-xr-jWE" secondAttribute="centerX" id="SaD-sb-Jv4"/>
+                            <constraint firstItem="5DT-S5-dAp" firstAttribute="centerY" secondItem="q7t-xr-jWE" secondAttribute="centerY" id="UjZ-gn-dO7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2a9-Dt-75c"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zXB-F6-5aL"/>
+                    <connections>
+                        <outlet property="topRatedBtn" destination="5DT-S5-dAp" id="hja-e1-SWQ"/>
+                        <segue destination="0hL-v6-7X4" kind="show" identifier="fromAnime" id="hK1-ke-3fu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpO-y3-EKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="202" y="72"/>
+        </scene>
+        <!--MangaVC-->
+        <scene sceneID="M3z-jq-MbI">
+            <objects>
+                <viewController title="MangaVC" id="TIc-5q-hwd" customClass="MainViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bS2-wK-af5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmJ-X4-JYE">
+                                <rect key="frame" x="172" y="433" width="70" height="30"/>
+                                <state key="normal" title="Top Rated">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="topRatedBtnPressed:" destination="TIc-5q-hwd" eventType="touchUpInside" id="NPO-jZ-S7x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dmJ-X4-JYE" firstAttribute="centerY" secondItem="bS2-wK-af5" secondAttribute="centerY" id="SPP-KG-UVm"/>
+                            <constraint firstItem="dmJ-X4-JYE" firstAttribute="centerX" secondItem="bS2-wK-af5" secondAttribute="centerX" id="bA9-qR-hIz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CbW-2p-0TY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zfu-Y5-1ip"/>
+                    <connections>
+                        <outlet property="topRatedBtn" destination="dmJ-X4-JYE" id="D40-dF-Xq4"/>
+                        <segue destination="0hL-v6-7X4" kind="show" identifier="fromManga" id="pc8-Bm-GbF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-h5-AcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="67"/>
+        </scene>
+        <!--Anime-->
+        <scene sceneID="WCk-hd-Pex">
+            <objects>
+                <navigationController id="FaB-Fc-Qh0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Anime" image="tv" catalog="system" selectedImage="tv.fill" id="Cb7-op-8F0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tfe-Og-Qio">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uYD-8S-Yhz" kind="relationship" relationship="rootViewController" id="kl5-Lz-Lgw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Lw-T6-ZJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="210" y="-689"/>
+        </scene>
+        <!--AnimeMangaVC-->
         <scene sceneID="Js4-hN-bpS">
             <objects>
-                <tableViewController id="0hL-v6-7X4" customClass="AnimeMangaTableViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="AnimeMangaVC" id="0hL-v6-7X4" customClass="TopTableViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zsD-16-0ia">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="KXF-sC-reh" customClass="AnimeCell" customModule="TopAnime" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KXF-sC-reh" id="QJo-qy-ufd">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -39,7 +151,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRy-fb-K8P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292.753623188406" y="332.8125"/>
+            <point key="canvasLocation" x="659" y="819"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="cQz-Ie-Lmw">
@@ -50,41 +162,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiL-5U-INO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1056"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="929"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txx-mK-gSJ" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Br7-WX-r1P">
-                                                <rect key="frame" x="10" y="8" width="59" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Br7-WX-r1P">
+                                                <rect key="frame" x="10" y="8" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7NJ-rX-GnT">
-                                                <rect key="frame" x="10" y="53.5" width="150" height="230"/>
+                                                <rect key="frame" x="10" y="28" width="150" height="230"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="230" id="Jaf-2D-cgf"/>
                                                     <constraint firstAttribute="width" constant="150" id="cg3-gQ-du6"/>
                                                 </constraints>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-c3-3Bb">
-                                                <rect key="frame" x="170" y="53.5" width="229" height="230"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-c3-3Bb" userLabel="Details StackView">
+                                                <rect key="frame" x="170" y="28" width="229" height="230"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WAW-ns-QxV">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="WAW-ns-QxV">
                                                         <rect key="frame" x="0.0" y="0.0" width="229" height="32.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eDW-BX-d8G">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="32.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZU-NO-2Kq">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="15"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="47.5" height="15"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54o-Hn-AY4">
-                                                                        <rect key="frame" x="0.0" y="15" width="45.5" height="17.5"/>
+                                                                        <rect key="frame" x="0.0" y="15" width="47.5" height="17.5"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -92,16 +204,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="jYw-qh-Pcb">
-                                                                <rect key="frame" x="55.5" y="0.0" width="86" height="32.5"/>
+                                                                <rect key="frame" x="54.5" y="0.0" width="89" height="32.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EPISODES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ra1-tl-9UJ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="15"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="15"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxZ-FM-U19">
-                                                                        <rect key="frame" x="0.0" y="15" width="86" height="17.5"/>
+                                                                        <rect key="frame" x="0.0" y="15" width="89" height="17.5"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -109,16 +221,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-ll-ctN">
-                                                                <rect key="frame" x="151.5" y="0.0" width="77.5" height="32.5"/>
+                                                                <rect key="frame" x="150.5" y="0.0" width="78.5" height="32.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEASON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2R-bk-dTg">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="15"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="15"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7P-AO-xmr">
-                                                                        <rect key="frame" x="0.0" y="15" width="77.5" height="17.5"/>
+                                                                        <rect key="frame" x="0.0" y="15" width="78.5" height="17.5"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -139,7 +251,7 @@
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="at8-kE-HBc">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="at8-kE-HBc">
                                                                         <rect key="frame" x="0.0" y="15" width="229" height="17.5"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,7 +273,7 @@
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwb-By-YYq">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwb-By-YYq">
                                                                         <rect key="frame" x="0.0" y="15" width="229" height="17.5"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -185,7 +297,7 @@
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hz-Ea-t28">
                                                                         <rect key="frame" x="0.0" y="15" width="104.5" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -202,7 +314,7 @@
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3I-5T-Pd6">
                                                                         <rect key="frame" x="0.0" y="15" width="104.5" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="15"/>
+                                                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -212,18 +324,123 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopis" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-Nh-0nZ">
+                                                <rect key="frame" x="10" y="278" width="394" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nM6-S6-Xwz" userLabel="Separator">
+                                                <rect key="frame" x="45" y="315.5" width="324" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="o55-s8-zAe"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nes-pv-6ae" userLabel="Names StackView">
+                                                <rect key="frame" x="10" y="326.5" width="394" height="150"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KQd-YP-n5w">
+                                                        <rect key="frame" x="0.0" y="0.0" width="61" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JAPANESE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHa-aY-JB1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="61" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRo-FT-ygA">
+                                                                <rect key="frame" x="0.0" y="15" width="61" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-Ks-mw5">
+                                                        <rect key="frame" x="0.0" y="40" width="58" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENGLISH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jai-zI-eQy">
+                                                                <rect key="frame" x="0.0" y="0.0" width="58" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvK-f6-pHP">
+                                                                <rect key="frame" x="0.0" y="15" width="58" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cW9-GP-KDX">
+                                                        <rect key="frame" x="0.0" y="80" width="96.5" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTHER NAMES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPF-Vk-0Z0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="other" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nto-Xv-g9M">
+                                                                <rect key="frame" x="0.0" y="15" width="96.5" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AD7-Q7-4Pn">
+                                                        <rect key="frame" x="0.0" y="120" width="47.5" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AIRING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQY-7U-HZE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="air" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQd-x7-UWH">
+                                                                <rect key="frame" x="0.0" y="15" width="47.5" height="15"/>
+                                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPq-zu-Ars" userLabel="Separator">
+                                                <rect key="frame" x="45" y="486.5" width="324" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="xaN-52-9yW"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Br7-WX-r1P" firstAttribute="top" secondItem="txx-mK-gSJ" secondAttribute="top" constant="8" id="07o-Hu-UDU"/>
+                                            <constraint firstAttribute="trailing" secondItem="kPq-zu-Ars" secondAttribute="trailing" constant="45" id="1gR-Es-Xhd"/>
                                             <constraint firstAttribute="trailing" secondItem="Za8-c3-3Bb" secondAttribute="trailing" constant="15" id="50b-RL-4lm"/>
+                                            <constraint firstItem="EL1-Nh-0nZ" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="5Bd-AB-Jfp"/>
                                             <constraint firstItem="7NJ-rX-GnT" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="BHI-fr-X8M"/>
                                             <constraint firstItem="7NJ-rX-GnT" firstAttribute="top" secondItem="Br7-WX-r1P" secondAttribute="bottom" priority="900" constant="20" id="F2T-hs-bK7"/>
+                                            <constraint firstItem="kPq-zu-Ars" firstAttribute="top" secondItem="Nes-pv-6ae" secondAttribute="bottom" constant="10" id="Idx-Lw-vS7"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="top" secondItem="Br7-WX-r1P" secondAttribute="bottom" priority="900" constant="20" id="Qyv-rB-FN5"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="height" secondItem="7NJ-rX-GnT" secondAttribute="height" id="WvL-f9-V7h"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nes-pv-6ae" secondAttribute="trailing" constant="10" id="YSB-UA-aVl"/>
+                                            <constraint firstItem="nM6-S6-Xwz" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="45" id="aWI-pt-FcV"/>
+                                            <constraint firstItem="EL1-Nh-0nZ" firstAttribute="top" secondItem="Za8-c3-3Bb" secondAttribute="bottom" constant="20" id="fLu-Ls-qgu"/>
                                             <constraint firstAttribute="height" constant="1000" id="hbC-5r-YpN"/>
+                                            <constraint firstItem="kPq-zu-Ars" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="45" id="kjb-aD-Aqo"/>
+                                            <constraint firstAttribute="trailing" secondItem="EL1-Nh-0nZ" secondAttribute="trailing" constant="10" id="lTh-xA-RHD"/>
+                                            <constraint firstItem="Nes-pv-6ae" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="nK0-4e-WfB"/>
+                                            <constraint firstAttribute="trailing" secondItem="nM6-S6-Xwz" secondAttribute="trailing" constant="45" id="p4j-lL-aii"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="leading" secondItem="7NJ-rX-GnT" secondAttribute="trailing" constant="10" id="phd-dZ-9ln"/>
+                                            <constraint firstItem="Nes-pv-6ae" firstAttribute="top" secondItem="nM6-S6-Xwz" secondAttribute="bottom" constant="10" id="sZ8-P7-RCJ"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Br7-WX-r1P" secondAttribute="trailing" constant="20" symbolic="YES" id="xJ9-yQ-Huw"/>
                                             <constraint firstItem="Br7-WX-r1P" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="z9X-LA-DKP"/>
+                                            <constraint firstItem="nM6-S6-Xwz" firstAttribute="top" secondItem="EL1-Nh-0nZ" secondAttribute="bottom" constant="20" id="zl7-R4-Lc0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -250,37 +467,84 @@
                     <navigationItem key="navigationItem" id="thi-2L-W7g"/>
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
+                        <outlet property="airedLbl" destination="MQd-x7-UWH" id="Qrc-ti-GeU"/>
+                        <outlet property="engNameLbl" destination="wvK-f6-pHP" id="rTj-zb-97A"/>
                         <outlet property="episodesLbl" destination="rxZ-FM-U19" id="0Yq-JY-o9o"/>
                         <outlet property="genreLbl" destination="Kwb-By-YYq" id="1zG-PH-jyP"/>
                         <outlet property="imgView" destination="7NJ-rX-GnT" id="Fp9-zg-CPY"/>
+                        <outlet property="japanNameLbl" destination="bRo-FT-ygA" id="A9W-0c-nvs"/>
+                        <outlet property="otherNamesLbl" destination="nto-Xv-g9M" id="Duz-y9-OdD"/>
                         <outlet property="premieredLbl" destination="z7P-AO-xmr" id="xDX-lD-bK8"/>
                         <outlet property="rankLbl" destination="Q3I-5T-Pd6" id="DxA-Vk-Tup"/>
                         <outlet property="scoreLbl" destination="7hz-Ea-t28" id="kg5-Xp-2kP"/>
+                        <outlet property="studioLbl" destination="at8-kE-HBc" id="OhS-65-tXx"/>
+                        <outlet property="synopisLbl" destination="EL1-Nh-0nZ" id="JAH-4Z-arR"/>
                         <outlet property="titleLbl" destination="Br7-WX-r1P" id="fA2-bR-agV"/>
                         <outlet property="typeLbl" destination="54o-Hn-AY4" id="W3a-p4-ydh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTF-XX-iX4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047.826086956522" y="332.8125"/>
+            <point key="canvasLocation" x="659" y="1600"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ps2-q4-nFf">
+        <!--Manga-->
+        <scene sceneID="nWL-BM-7uu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zIc-gM-k5q" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gW8-es-qNk">
+                <navigationController id="NRg-jv-1gG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Manga" image="book" catalog="system" selectedImage="book.fill" id="gtb-mP-xsL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bXw-lv-mkj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="0hL-v6-7X4" kind="relationship" relationship="rootViewController" id="rxn-Jv-X8S"/>
+                        <segue destination="TIc-5q-hwd" kind="relationship" relationship="rootViewController" id="fe8-pJ-cl3"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XJQ-ng-c0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXy-IB-2iT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382.60869565217394" y="332.8125"/>
+            <point key="canvasLocation" x="1157" y="-689"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PLG-qg-YO4">
+            <objects>
+                <navigationController id="I6y-a2-BbY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="p93-AQ-lin"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eEe-qh-Im9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ElK-0L-VwM" kind="relationship" relationship="rootViewController" id="MdG-1k-Va6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGc-2a-HaU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2141" y="-689"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="B5X-KG-4wV">
+            <objects>
+                <viewController id="ElK-0L-VwM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wgR-zD-bua">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="3Ct-Ec-QHz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rYo-OH-xFn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WUy-Wn-onm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2141" y="67"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="pc8-Bm-GbF"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="book.fill" catalog="system" width="128" height="100"/>
+        <image name="tv" catalog="system" width="128" height="93"/>
+        <image name="tv.fill" catalog="system" width="128" height="93"/>
+    </resources>
 </document>

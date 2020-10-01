@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TopAnimeManga: UITableViewController {
+class TopTableViewController: UITableViewController {
   
   var animeMangaList = [TopAnimeManga]()
   var request = TopManager()
   
   var topType = String()
-  var topPage = String()
+  var topPage = "1"
   var topSubType = String()
 
   @IBOutlet var animeTableView: UITableView!
@@ -24,7 +24,6 @@ class TopAnimeManga: UITableViewController {
     animeTableView.register(UINib(nibName: K.cellIdentifier, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
     request.delegate = self
     request.fetchTop(topType, topPage, topSubType)
-    
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +56,7 @@ class TopAnimeManga: UITableViewController {
 }
 
 
-extension TopAnimeManga: TopManagerDelegate {
+extension TopTableViewController: TopManagerDelegate {
   func didFetchTopAnimeManga(_ topManager: TopManager, _ top: TopModel) {
     for item in top.top {
       self.animeMangaList.append(item)

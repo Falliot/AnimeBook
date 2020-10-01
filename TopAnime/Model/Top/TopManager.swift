@@ -19,8 +19,8 @@ struct TopManager {
     
   var delegate: TopManagerDelegate?
   
-  func fetchTop(topType: String) {
-    let urlString = K.animeMangaTopURL + "\(topType)"
+  func fetchTop(_ topType: String, _ topPage: String, _ topSubType: String) {
+    let urlString = K.animeMangaTopURL + "\(topType)/" + "\(topPage)/" + "\(topSubType)"
     print(urlString)
     performRequest(urlString)
   }
@@ -50,7 +50,6 @@ struct TopManager {
     let decoder = JSONDecoder()
     do {
       let decodedData = try decoder.decode(TopData.self, from: topData)
-      print(decodedData)
       return TopModel(top: decodedData.top)
     } catch {
       delegate?.didFailWithError(error)
