@@ -26,4 +26,5 @@ struct AnimeModel {
   let animeGenre: [String]
   let animeStudio: [String]
   let animeRank: String
+  let animeAired: String
 }

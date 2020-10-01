@@ -53,6 +53,7 @@ struct AnimeManager {
   
   private func decodeJSON(animeData: Data) -> AnimeModel? {
     let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
     do {
       let decodedData = try decoder.decode(AnimeData.self, from: animeData)
       let anime = setupAnime(animeData: decodedData)
@@ -79,6 +80,7 @@ struct AnimeManager {
     var genres = [String]()
     var studios = [String]()
     
+    let aired = animeData.aired.string
     
     if animeData.premiered != nil {
       premiered = animeData.premiered!
@@ -101,7 +103,7 @@ struct AnimeManager {
       return String(animeData.popularity)
     }
     
-    var rank = "\(animeData.rank)"
+    let rank = "\(animeData.rank)"
     
     if animeData.episodes != nil {
       episodes = "\(animeData.episodes!)"
@@ -109,7 +111,7 @@ struct AnimeManager {
       episodes = "Still airing"
     }
     
-    if animeData.otherNames != nil {
+    if animeData.otherNames?.count != 0 {
       otherNames = animeData.otherNames!
     } else {
       otherNames.append("No other names")
@@ -125,7 +127,7 @@ struct AnimeManager {
     }
     
     if animeData.studio != nil {
-      for studio in animeData.studio {
+      for studio in animeData.studio! {
         studios.append(studio.name)
       }
     } else {
@@ -133,7 +135,7 @@ struct AnimeManager {
     }
     
     
-    let anime = AnimeModel(animePage: webPage, animeImage: imageURL, animeTrailer: trailer, animeName: title, animeJapanName: japanTitle, animeOtherNames: otherNames, animeType: type, animeEpisodes: episodes, animeStatus: status, animeScore: score, animePopularity: popularity, animeDetails: details, animePremire: premiered, animeGenre: genres, animeStudio: studios, animeRank: rank)
+    let anime = AnimeModel(animePage: webPage, animeImage: imageURL, animeTrailer: trailer, animeName: title, animeJapanName: japanTitle, animeOtherNames: otherNames, animeType: type, animeEpisodes: episodes, animeStatus: status, animeScore: score, animePopularity: popularity, animeDetails: details, animePremire: premiered, animeGenre: genres, animeStudio: studios, animeRank: rank, animeAired: aired)
     return anime
   }
 }

@@ -25,9 +25,9 @@ struct AnimeData: Decodable {
   let premiered: String?
   
   let genre: [Genre]?
-  let studio: [Studio]
+  let studio: [Studio]?
   let rank: Int
-  
+  let aired: Aired
   
   enum CodingKeys: String, CodingKey {
     case webPage = "url"
@@ -47,6 +47,7 @@ struct AnimeData: Decodable {
     case genre = "genres"
     case studio = "studios"
     case rank
+    case aired
   }
   
 //  init(from decoder: Decoder) throws {
@@ -65,10 +66,11 @@ struct AnimeData: Decodable {
 //  details = try container.decode(String.self, forKey: .details)
 //  premiered = try container.decode(String.self, forKey: .premiered)
 //  genre = try container.decode([Genre].self, forKey: .genre)
-//
+//  studio = try container.decode([Studio].self, forKey: .studio)
+//  rank = try container.decode(Int.self, forKey: .rank)
+//  aired = try container.decode(Aired.self, forKey: .aired)
 //  }
-//  
-//  
+//
 }
 
 struct Genre : Decodable {
@@ -79,3 +81,6 @@ struct Studio: Decodable {
   let name: String
 }
 
+struct Aired: Decodable {
+  let string: String
+}

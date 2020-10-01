@@ -24,7 +24,6 @@ class AnimeCell: UITableViewCell {
   func setupAnimeCell(_ anime: TopAnimeManga) {
     self.nameLbl?.text = anime.title
     self.imgView.kf.setImage(with: URL(string: anime.imageURL))
-    
   }
   
   
