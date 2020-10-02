@@ -19,12 +19,17 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   
   @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var typeLbl: UILabel!
+  @IBOutlet weak var episodesVolumesLbl: UILabel!
   @IBOutlet weak var episodesLbl: UILabel!
+  @IBOutlet weak var premieredChaptersLbl: UILabel!
   @IBOutlet weak var premieredLbl: UILabel!
+  @IBOutlet weak var studioAuthorLbl: UILabel!
+  @IBOutlet weak var studioLbl: UILabel!
+  @IBOutlet weak var topPublishedLbl: UILabel!
+  @IBOutlet weak var bottomPublishedLbl: UILabel!
   @IBOutlet weak var genreLbl: UILabel!
   @IBOutlet weak var scoreLbl: UILabel!
   @IBOutlet weak var rankLbl: UILabel!
-  @IBOutlet weak var studioLbl: UILabel!
   @IBOutlet weak var synopisLbl: UILabel!
   @IBOutlet weak var japanNameLbl: UILabel!
   @IBOutlet weak var engNameLbl: UILabel!
@@ -32,8 +37,14 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   @IBOutlet weak var airedLbl: UILabel!
   
   var parentAnime: TopAnimeManga?
+  
   var anime: AnimeModel?
   var animeManager = AnimeManager()
+  
+  var manga: MangaModel?
+  var mangaManager = MangaManager()
+  
+  var id = String()
   
   var url : URL? {
     return URL(string: parentAnime!.imageURL)
@@ -44,7 +55,13 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
     
     showActivityIndicator()
     animeManager.delegate = self
-    animeManager.fetchAnime(animeID: "\(parentAnime!.id)")
+    mangaManager.delegate = self
+    
+    if id == K.animeID {
+      animeManager.fetchAnime(animeID: "\(parentAnime!.id)")
+    } else {
+      mangaManager.fetchManga(mangaID: "\(parentAnime!.id)", mangaRequest: "")
+    }
     
     imgView.kf.setImage(with: url)
     setupBackground()
@@ -68,28 +85,58 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   
   
   func setupLabels() {
-    titleLbl.text = anime?.animeName
-    typeLbl.text = anime?.animeType
-    premieredLbl.text = anime?.animePremire
-    episodesLbl.text = anime?.animeEpisodes
-    scoreLbl.text = anime?.animeScore
-    rankLbl.text = "#" + "\(anime!.animeRank)"
-    genreLbl.text = anime?.animeGenre.joined(separator: ", ")
-    studioLbl.text = anime?.animeStudio.joined(separator: ", ")
-    synopisLbl.text = anime?.animeDetails
-    japanNameLbl.text = anime?.animeJapanName
-    engNameLbl.text = anime?.animeName
-    otherNamesLbl.text = anime?.animeOtherNames.joined(separator: ", ")
-    airedLbl.text = anime!.animeAired
+    if id == K.animeID {
+      titleLbl.text = anime?.animeName
+      typeLbl.text = anime?.animeType
+      premieredLbl.text = anime?.animePremire
+      episodesLbl.text = anime?.animeEpisodes
+      scoreLbl.text = anime?.animeScore
+      rankLbl.text = "#" + "\(anime!.animeRank)"
+      genreLbl.text = anime?.animeGenre.joined(separator: ", ")
+      studioLbl.text = anime?.animeStudio.joined(separator: ", ")
+      synopisLbl.text = anime?.animeDetails
+      japanNameLbl.text = anime?.animeJapanName
+      engNameLbl.text = anime?.animeName
+      otherNamesLbl.text = anime?.animeOtherNames.joined(separator: ", ")
+      airedLbl.text = anime!.animeAired
+      
+      episodesVolumesLbl.text = "EPISODES"
+      premieredChaptersLbl.text = "SEASON"
+      studioAuthorLbl.text = "STUDIO"
+      topPublishedLbl.isHidden = true
+      bottomPublishedLbl.isHidden = true
+      
+    } else {
+      //TODO: manga case & send manga/anime data from the parentVC
+      titleLbl.text = manga?.mangaName
+      typeLbl.text = manga?.mangaType
+      premieredLbl.text = manga?.mangaChapters
+      episodesLbl.text = manga?.mangaVolumes
+      scoreLbl.text = manga?.mangaScore
+      rankLbl.text = "#" + "\(manga!.mangaRank)"
+      genreLbl.text = manga?.mangaGenre.joined(separator: ", ")
+      studioLbl.text = manga?.mangaAuthors.joined(separator: ", ")
+      synopisLbl.text = manga?.mangaDetails
+      japanNameLbl.text = manga?.mangaJapanName
+      engNameLbl.text = manga?.mangaEnglishName
+      otherNamesLbl.text = manga?.mangaOtherNames.joined(separator: ", ")
+      airedLbl.text = manga!.mangaPublished
+      
+      episodesVolumesLbl.text = "VOLUMES"
+      premieredChaptersLbl.text = "CHAPTERS"
+      studioAuthorLbl.text = "AUTHOR"
+      topPublishedLbl.isHidden = false
+      bottomPublishedLbl.isHidden = false
+    }
   }
   
-@objc func tapLabel(_ tapGesture: UITapGestureRecognizer) {
-     if let label = tapGesture.view as? UILabel {
-       label.numberOfLines = label.numberOfLines == 0 ? 5 : 0
+  @objc func tapLabel(_ tapGesture: UITapGestureRecognizer) {
+    if let label = tapGesture.view as? UILabel {
+      label.numberOfLines = label.numberOfLines == 0 ? 5 : 0
       UIView.animate(withDuration: 0.5) {
         label.superview?.layoutIfNeeded()
-       }
-     }
+      }
+    }
   }
   
   func setupBackground() {
@@ -113,4 +160,10 @@ extension DetailsViewController: AnimeManagerDelegate {
   func didFailWithError(_ error: Error) {
     print("AnimeManagerError: \(error)")
   }
+}
+
+extension DetailsViewController: MangaManagerDelegate {
+  func didFetchMangaData(_ mangaManger: MangaManager, _ mangaModel: MangaModel) {
+    manga = mangaModel
+  } 
 }

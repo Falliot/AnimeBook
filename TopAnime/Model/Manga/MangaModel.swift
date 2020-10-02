@@ -12,6 +12,7 @@ struct MangaModel {
   let mangaPage: String
   let mangaImage: String
   let mangaName: String
+  let mangaEnglishName: String
   let mangaJapanName: String
   let mangaOtherNames: [String]
   let mangaStatus: String
@@ -24,4 +25,5 @@ struct MangaModel {
   let mangaPopularity: String
   let mangaDetails: String
   let mangaGenre: [String]
+  let mangaAuthors: [String]
 }

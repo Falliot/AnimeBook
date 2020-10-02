@@ -17,10 +17,10 @@ struct MangaManager {
   
   var delegate: MangaManagerDelegate?
   
-  func fetchManga(_ mangaID: String, _ mangaRequest: String) {
+  func fetchManga(mangaID: String, mangaRequest: String) {
     let urlString = K.mangaURL + "\(mangaID)/" + "\(mangaRequest)"
     print(urlString)
-    
+    performRequest(urlString)
   }
   
   func performRequest(_ urlString: String) {
@@ -37,6 +37,7 @@ struct MangaManager {
       }
       if let safeData = data {
         if let manga = self.decodeJSON(safeData) {
+          print(manga)
           self.delegate?.didFetchMangaData(self, manga)
         }
       }
@@ -69,15 +70,29 @@ struct MangaManager {
     let published = mangaData.published.string
     
     var otherNames = [String]()
+    var authors = [String]()
     var genres = [String]()
+    var volumes = String()
+    var chapters = String()
+    var englishTitle = String()
     
     
-    var volumes: String {
-      return String(mangaData.volumes)
+    if mangaData.englishName != nil {
+      englishTitle = mangaData.englishName!
+    } else {
+      englishTitle = " - "
+    }
+  
+    if mangaData.volumes != nil {
+      volumes = "\(mangaData.volumes)"
+    } else {
+      volumes = " - "
     }
     
-    var chapters: String {
-      return String(mangaData.chapters)
+    if mangaData.chapters != nil {
+      chapters = "\(mangaData.chapters)"
+    } else {
+      chapters = " - "
     }
     
     var score: String {
@@ -96,6 +111,14 @@ struct MangaManager {
       otherNames.append("No other names")
     }
     
+    if mangaData.authors != nil {
+      for author in mangaData.authors! {
+        authors.append(author.name)
+      }
+    } else {
+      authors.append(" - ")
+    }
+    
     
     if mangaData.genres != nil {
       for genre in mangaData.genres! {
@@ -105,7 +128,7 @@ struct MangaManager {
       genres.append("Unknown")
     }
     
-    let manga = MangaModel(mangaPage: webPage, mangaImage: imageURL, mangaName: title, mangaJapanName: japanTitle, mangaOtherNames: otherNames, mangaStatus: status, mangaType: type, mangaVolumes: volumes, mangaChapters: chapters, mangaPublished: published, mangaRank: rank, mangaScore: score, mangaPopularity: popularity, mangaDetails: details, mangaGenre: genres)
+    let manga = MangaModel(mangaPage: webPage, mangaImage: imageURL, mangaName: title, mangaEnglishName: englishTitle, mangaJapanName: japanTitle, mangaOtherNames: otherNames, mangaStatus: status, mangaType: type, mangaVolumes: volumes, mangaChapters: chapters, mangaPublished: published, mangaRank: rank, mangaScore: score, mangaPopularity: popularity, mangaDetails: details, mangaGenre: genres, mangaAuthors: authors)
     
     return manga
   }
