@@ -43,8 +43,10 @@ class TopTableViewController: UITableViewController {
       
       if animeMangaTitle == K.VCTitle.animeVC {
         destination.id = K.animeID
+        destination.title = "Anime"
       } else {
-          destination.id = K.mangaID
+        destination.id = K.mangaID
+        destination.title = "Manga"
       }
     }
   }

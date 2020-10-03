@@ -19,8 +19,10 @@ struct K {
   
   struct SegueIdentifiers {
     static let toDetails = "toDetails"
-    static let fromAnime = "fromAnime"
-    static let fromManga = "fromManga"
+    static let fromAnimeToRated = "fromAnimeToRated"
+    static let fromMangaToRated = "fromMangaToRated"
+    static let fromAnimeToPopular = "fromAnimeToPopular"
+    static let fromMangaToPopular = "fromMangaToPopular"
   }
   
   struct VCTitle {

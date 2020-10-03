@@ -55,6 +55,18 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
     animeManager.delegate = self
     mangaManager.delegate = self
     
+    
+    animeMangaRequest()
+    imgView.kf.setImage(with: url)
+    setupBackground()
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(_:)))
+    synopisLbl.addGestureRecognizer(tap)
+    synopisLbl.numberOfLines = 5
+    
+  }
+  
+  private func animeMangaRequest() {
     showActivityIndicator()
     
     if id == K.animeID {
@@ -82,27 +94,8 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
         }
       }
     }
-    
-    
-    imgView.kf.setImage(with: url)
-    
-    setupBackground()
-
-    let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(_:)))
-    synopisLbl.addGestureRecognizer(tap)
-    synopisLbl.numberOfLines = 5
-    
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
-    
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(true)
-    
-  }
   
   
   func setupLabels() {
