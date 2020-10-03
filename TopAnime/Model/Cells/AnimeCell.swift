@@ -26,5 +26,9 @@ class AnimeCell: UITableViewCell {
     self.imgView.kf.setImage(with: URL(string: anime.imageURL))
   }
   
+  func setupGenre(_ genre: Anime) {
+    self.nameLbl.text = genre.name
+    self.imgView.kf.setImage(with: URL(string: genre.imageURL))
+  }
   
 }

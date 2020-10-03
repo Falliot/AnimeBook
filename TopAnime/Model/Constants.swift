@@ -14,8 +14,11 @@ struct K {
   static let animeMangaTopURL = "https://api.jikan.moe/v3/top/"
   static let animeURL = "https://api.jikan.moe/v3/anime/"
   static let mangaURL = "https://api.jikan.moe/v3/manga/"
+  static let genreURL = "https://api.jikan.moe/v3/genre/"
   static let animeID = "anime"
   static let mangaID = "manga"
+  static let genreID = "genre"
+  static let topID = "top"
   
   struct SegueIdentifiers {
     static let toDetails = "toDetails"
@@ -23,6 +26,9 @@ struct K {
     static let fromMangaToRated = "fromMangaToRated"
     static let fromAnimeToPopular = "fromAnimeToPopular"
     static let fromMangaToPopular = "fromMangaToPopular"
+    static let fromAnimeToGenres = "fromAnimeToGenres"
+    static let fromMangaToGenres = "fromMangaToGenres"
+    static let fromGenreToAnimeManga = "fromGenreToAnimeManga"
   }
   
   struct VCTitle {
