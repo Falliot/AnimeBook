@@ -115,7 +115,6 @@
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="topRatedBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="K2G-sa-RQt"/>
                                             <action selector="topRatedBtnPressed:" destination="TIc-5q-hwd" eventType="touchUpInside" id="s3E-s0-Zob"/>
                                         </connections>
                                     </button>
@@ -204,10 +203,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="9yM-Zc-COz"/>
+                    <connections>
+                        <segue destination="0hL-v6-7X4" kind="show" identifier="fromGenreToAnimeManga" id="3aN-Yn-Qdu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41A-7d-DPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="801"/>
+            <point key="canvasLocation" x="-109" y="901"/>
         </scene>
         <!--AnimeMangaVC-->
         <scene sceneID="Js4-hN-bpS">
@@ -242,7 +244,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRy-fb-K8P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="819"/>
+            <point key="canvasLocation" x="607" y="901"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="cQz-Ie-Lmw">
@@ -580,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTF-XX-iX4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="1600"/>
+            <point key="canvasLocation" x="604" y="1705"/>
         </scene>
         <!--Manga-->
         <scene sceneID="nWL-BM-7uu">
@@ -634,8 +636,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pX7-Sn-f48"/>
-        <segue reference="3fL-UT-5ga"/>
+        <segue reference="3aN-Yn-Qdu"/>
+        <segue reference="5uY-Be-QCP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
