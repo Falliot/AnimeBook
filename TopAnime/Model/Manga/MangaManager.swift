@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MangaManagerDelegate {
-  func didFetchMangaData(_ mangaManger: MangaManager, _ mangaModel: MangaModel)
+  func didFetchMangaData(_ mangaModel: MangaModel)
   func didFailWithError(_ error: Error)
 }
 
@@ -17,13 +17,10 @@ struct MangaManager {
   
   var delegate: MangaManagerDelegate?
   
-  func fetchManga(mangaID: String, mangaRequest: String) {
+  func performRequest(mangaID: String, mangaRequest: String, completion: @escaping (Result<MangaModel, Error>) -> ()) {
+    
     let urlString = K.mangaURL + "\(mangaID)/" + "\(mangaRequest)"
     print(urlString)
-    performRequest(urlString)
-  }
-  
-  func performRequest(_ urlString: String) {
     guard let url = URL(string: urlString) else {
       print("MangaURL doesn't exists")
       return
@@ -32,13 +29,13 @@ struct MangaManager {
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
       
       if error != nil {
-        self.delegate?.didFailWithError(error!)
+        completion(.failure(error!))
         return
       }
       if let safeData = data {
         if let manga = self.decodeJSON(safeData) {
           print(manga)
-          self.delegate?.didFetchMangaData(self, manga)
+          completion(.success(manga))
         }
       }
     }
@@ -84,13 +81,13 @@ struct MangaManager {
     }
   
     if mangaData.volumes != nil {
-      volumes = "\(mangaData.volumes)"
+      volumes = "\(mangaData.volumes!)"
     } else {
       volumes = " - "
     }
     
     if mangaData.chapters != nil {
-      chapters = "\(mangaData.chapters)"
+      chapters = "\(mangaData.chapters!)"
     } else {
       chapters = " - "
     }

@@ -16,6 +16,8 @@ class TopTableViewController: UITableViewController {
   var topType = String()
   var topPage = "1"
   var topSubType = String()
+  var animeMangaTitle = String()
+  
 
   @IBOutlet var animeTableView: UITableView!
   
@@ -38,6 +40,12 @@ class TopTableViewController: UITableViewController {
     if let destination = segue.destination as? DetailsViewController {
       let index = tableView.indexPathForSelectedRow?.row
       destination.parentAnime = animeMangaList[index!]
+      
+      if animeMangaTitle == K.VCTitle.animeVC {
+        destination.id = K.animeID
+      } else {
+          destination.id = K.mangaID
+      }
     }
   }
   

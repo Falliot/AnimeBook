@@ -244,33 +244,16 @@
                                                         <rect key="frame" x="0.0" y="66" width="229" height="32.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZeQ-qc-Fpo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="51.5" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="229" height="32.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsy-zp-sDq" userLabel="Studio">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="51.5" height="15"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="229" height="15"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="at8-kE-HBc">
-                                                                        <rect key="frame" x="0.0" y="15" width="51.5" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
-                                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZkI-Nv-w1N">
-                                                                <rect key="frame" x="155.5" y="0.0" width="73.5" height="32.5"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PUBLISHED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g4-VT-7R4" userLabel="Studio">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="15"/>
-                                                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="13"/>
-                                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="published" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PG-Dy-3Ow">
-                                                                        <rect key="frame" x="0.0" y="15" width="73.5" height="17.5"/>
+                                                                        <rect key="frame" x="0.0" y="15" width="229" height="17.5"/>
                                                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -486,7 +469,7 @@
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
                         <outlet property="airedLbl" destination="MQd-x7-UWH" id="Qrc-ti-GeU"/>
-                        <outlet property="bottomPublishedLbl" destination="0PG-Dy-3Ow" id="jqV-4Y-6hJ"/>
+                        <outlet property="airedPublishedLbl" destination="iQY-7U-HZE" id="1Mc-eg-gdo"/>
                         <outlet property="engNameLbl" destination="wvK-f6-pHP" id="rTj-zb-97A"/>
                         <outlet property="episodesLbl" destination="rxZ-FM-U19" id="0Yq-JY-o9o"/>
                         <outlet property="episodesVolumesLbl" destination="Ra1-tl-9UJ" id="bZ3-t4-CSQ"/>
@@ -502,7 +485,6 @@
                         <outlet property="studioLbl" destination="at8-kE-HBc" id="OhS-65-tXx"/>
                         <outlet property="synopisLbl" destination="EL1-Nh-0nZ" id="JAH-4Z-arR"/>
                         <outlet property="titleLbl" destination="Br7-WX-r1P" id="fA2-bR-agV"/>
-                        <outlet property="topPublishedLbl" destination="5g4-VT-7R4" id="aLB-fg-2Di"/>
                         <outlet property="typeLbl" destination="54o-Hn-AY4" id="W3a-p4-ydh"/>
                     </connections>
                 </viewController>

@@ -33,9 +33,11 @@ class MainViewController: UIViewController {
       if segue.identifier == K.SegueIdentifiers.fromAnime {
         destinationVC.topType = "anime"
         destinationVC.topSubType = ""
+        destinationVC.animeMangaTitle = K.VCTitle.animeVC
       } else {
         destinationVC.topType = "manga"
         destinationVC.topSubType = ""
+        destinationVC.animeMangaTitle = K.VCTitle.mangaVC
       }
     }
   }

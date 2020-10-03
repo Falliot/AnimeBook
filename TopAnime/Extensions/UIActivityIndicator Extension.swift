@@ -31,6 +31,7 @@ public extension ActivityIndicatorPresenter where Self: UIViewController {
       self.greyView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
       self.greyView.backgroundColor = .black
       self.greyView.alpha = 0.75
+      self.view.isUserInteractionEnabled = false
       self.view.addSubview(self.greyView)
       
       self.activityIndicator.style = UIActivityIndicatorView.Style.large
@@ -45,6 +46,7 @@ public extension ActivityIndicatorPresenter where Self: UIViewController {
   
   func hideActivityIndicator() {
     DispatchQueue.main.async {
+      self.view.isUserInteractionEnabled = true
       self.activityIndicator.stopAnimating()
       self.activityIndicator.removeFromSuperview()
       self.greyView.removeFromSuperview()

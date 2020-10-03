@@ -25,8 +25,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   @IBOutlet weak var premieredLbl: UILabel!
   @IBOutlet weak var studioAuthorLbl: UILabel!
   @IBOutlet weak var studioLbl: UILabel!
-  @IBOutlet weak var topPublishedLbl: UILabel!
-  @IBOutlet weak var bottomPublishedLbl: UILabel!
+  @IBOutlet weak var airedPublishedLbl: UILabel!
   @IBOutlet weak var genreLbl: UILabel!
   @IBOutlet weak var scoreLbl: UILabel!
   @IBOutlet weak var rankLbl: UILabel!
@@ -53,19 +52,42 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    showActivityIndicator()
     animeManager.delegate = self
     mangaManager.delegate = self
     
+    showActivityIndicator()
+    
     if id == K.animeID {
-      animeManager.fetchAnime(animeID: "\(parentAnime!.id)")
+      animeManager.performRequest(animeID: "\(parentAnime!.id)") { (result) in
+        switch result {
+        case .success(let animeModel):
+          self.animeManager.delegate?.didFetchAnimeData(animeModel)
+          DispatchQueue.main.async {
+            self.setupLabels()
+          }
+        case .failure(let error):
+          self.animeManager.delegate?.didFailWithError(error)
+        }
+      }
     } else {
-      mangaManager.fetchManga(mangaID: "\(parentAnime!.id)", mangaRequest: "")
+      mangaManager.performRequest(mangaID: "\(parentAnime!.id)", mangaRequest: "") { (result) in
+        switch result {
+        case .success(let mangaModel):
+          self.mangaManager.delegate?.didFetchMangaData(mangaModel)
+          DispatchQueue.main.async {
+            self.setupLabels()
+          }
+        case .failure(let error):
+          self.mangaManager.delegate?.didFailWithError(error)
+        }
+      }
     }
     
-    imgView.kf.setImage(with: url)
-    setupBackground()
     
+    imgView.kf.setImage(with: url)
+    
+    setupBackground()
+
     let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(_:)))
     synopisLbl.addGestureRecognizer(tap)
     synopisLbl.numberOfLines = 5
@@ -79,8 +101,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(true)
-    setupLabels()
-    self.hideActivityIndicator()
+    
   }
   
   
@@ -103,11 +124,9 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       episodesVolumesLbl.text = "EPISODES"
       premieredChaptersLbl.text = "SEASON"
       studioAuthorLbl.text = "STUDIO"
-      topPublishedLbl.isHidden = true
-      bottomPublishedLbl.isHidden = true
+      airedPublishedLbl.text = "AIRED"
       
     } else {
-      //TODO: manga case & send manga/anime data from the parentVC
       titleLbl.text = manga?.mangaName
       typeLbl.text = manga?.mangaType
       premieredLbl.text = manga?.mangaChapters
@@ -120,14 +139,14 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       japanNameLbl.text = manga?.mangaJapanName
       engNameLbl.text = manga?.mangaEnglishName
       otherNamesLbl.text = manga?.mangaOtherNames.joined(separator: ", ")
-      airedLbl.text = manga!.mangaPublished
+      airedLbl.text = manga?.mangaPublished
       
       episodesVolumesLbl.text = "VOLUMES"
       premieredChaptersLbl.text = "CHAPTERS"
       studioAuthorLbl.text = "AUTHOR"
-      topPublishedLbl.isHidden = false
-      bottomPublishedLbl.isHidden = false
+      airedPublishedLbl.text = "PUBLISHED"
     }
+    self.hideActivityIndicator()
   }
   
   @objc func tapLabel(_ tapGesture: UITapGestureRecognizer) {
@@ -153,8 +172,8 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   
 }
 extension DetailsViewController: AnimeManagerDelegate {
-  func didFetchAnimeData(_ animeManager: AnimeManager, _ animeData: AnimeModel) {
-    anime = animeData
+  func didFetchAnimeData(_ animeModel: AnimeModel) {
+    anime = animeModel
   }
   
   func didFailWithError(_ error: Error) {
@@ -163,7 +182,7 @@ extension DetailsViewController: AnimeManagerDelegate {
 }
 
 extension DetailsViewController: MangaManagerDelegate {
-  func didFetchMangaData(_ mangaManger: MangaManager, _ mangaModel: MangaModel) {
+  func didFetchMangaData(_ mangaModel: MangaModel) {
     manga = mangaModel
   } 
 }

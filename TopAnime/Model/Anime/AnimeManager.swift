@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AnimeManagerDelegate {
-  func didFetchAnimeData(_ animeManager: AnimeManager, _ animeData: AnimeModel)
+  func didFetchAnimeData(_ animeData: AnimeModel)
   func didFailWithError(_ error: Error)
 }
 
@@ -17,34 +17,22 @@ struct AnimeManager {
   
   var delegate: AnimeManagerDelegate?
   
-  func fetchAnime(animeID: String) {
+  func performRequest(animeID: String, completion: @escaping (Result<AnimeModel, Error>) -> ()) {
+    
     let urlString = K.animeURL + animeID
     print(urlString)
-    performRequest(urlString)
-  }
-  
- private func performRequest(_ urlString: String) {
-    
     let url = URL(string: urlString)!
     
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
       
       if error != nil {
-        self.delegate?.didFailWithError(error!)
+        completion(.failure(error!))
         return
       }
-      
-      if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers),
-         let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
-          print(String(decoding: jsonData, as: UTF8.self))
-      } else {
-          print("json data malformed")
-      }
-      
-      
+
       if let safeData = data {
         if let anime = self.decodeJSON(animeData: safeData) {
-          self.delegate?.didFetchAnimeData(self, anime)
+          completion(.success(anime))
         }
       }
     }
