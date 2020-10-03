@@ -90,6 +90,7 @@
                         <outlet property="topRatedBtn" destination="5DT-S5-dAp" id="hja-e1-SWQ"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromAnimeToRated" id="hK1-ke-3fu"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromAnimeToPopular" id="9qL-tl-Brj"/>
+                        <segue destination="6Nh-co-7a6" kind="show" identifier="fromAnimeToGenres" id="5uY-Be-QCP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RpO-y3-EKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,6 +156,7 @@
                         <outlet property="topRatedBtn" destination="M19-5M-kLl" id="ap1-kW-rX0"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromMangaToRated" id="pc8-Bm-GbF"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromMangaToPopular" id="pX7-Sn-f48"/>
+                        <segue destination="6Nh-co-7a6" kind="show" identifier="fromMangaToGenres" id="3fL-UT-5ga"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae2-h5-AcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -177,6 +179,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Lw-T6-ZJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="210" y="-689"/>
+        </scene>
+        <!--Genres-->
+        <scene sceneID="SvU-oW-EK0">
+            <objects>
+                <tableViewController title="Genres" id="6Nh-co-7a6" customClass="GenresTableViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uFl-68-H0U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="DvN-zW-7Tx">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DvN-zW-7Tx" id="u9b-6S-BuW">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6Nh-co-7a6" id="1ta-ou-v5X"/>
+                            <outlet property="delegate" destination="6Nh-co-7a6" id="njF-EI-nYJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9yM-Zc-COz"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41A-7d-DPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="801"/>
         </scene>
         <!--AnimeMangaVC-->
         <scene sceneID="Js4-hN-bpS">
@@ -604,6 +635,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pX7-Sn-f48"/>
+        <segue reference="3fL-UT-5ga"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
