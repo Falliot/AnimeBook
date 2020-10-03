@@ -9,7 +9,6 @@
 import UIKit
 
 class GenresTableViewController: UITableViewController {
-
   
   var animeMangaID = String()
   
@@ -36,6 +35,27 @@ class GenresTableViewController: UITableViewController {
     }
       
     return cell
+  }
+  
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: K.SegueIdentifiers.fromGenreToAnimeManga, sender: self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destinationVC = segue.destination as? TopTableViewController {
+      let index = tableView.indexPathForSelectedRow!.row + 1
+      
+      if animeMangaID == K.animeID {
+        destinationVC.topGenreType = K.animeID
+        destinationVC.animeMangaGenreId = String(index)
+        destinationVC.topGenreId = K.genreID
+      } else {
+        destinationVC.topGenreType = K.mangaID
+        destinationVC.animeMangaGenreId = String(index)
+        destinationVC.topGenreId = K.genreID
+      }
+    }
   }
 
 }

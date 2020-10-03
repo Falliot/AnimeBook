@@ -38,7 +38,11 @@ class MainViewController: UIViewController {
   }
   
   @IBAction func genresBtnPressed(_ sender: Any) {
-    
+    if self.title == K.VCTitle.animeVC {
+      performSegue(withIdentifier: K.SegueIdentifiers.fromAnimeToGenres, sender: self)
+    } else {
+      performSegue(withIdentifier: K.SegueIdentifiers.fromMangaToGenres, sender: self)
+    }
   }
   
   
@@ -46,26 +50,30 @@ class MainViewController: UIViewController {
     if let destinationVC = segue.destination as? TopTableViewController {
       switch segue.identifier {
       case K.SegueIdentifiers.fromAnimeToRated:
-        destinationVC.topType = "anime"
+        destinationVC.topGenreType = "anime"
         destinationVC.topSubType = ""
         destinationVC.animeMangaTitle = K.VCTitle.animeVC
       case K.SegueIdentifiers.fromMangaToRated:
-        destinationVC.topType = "manga"
+        destinationVC.topGenreType = "manga"
         destinationVC.topSubType = ""
         destinationVC.animeMangaTitle = K.VCTitle.mangaVC
       case K.SegueIdentifiers.fromAnimeToPopular:
-        destinationVC.topType = "anime"
+        destinationVC.topGenreType = "anime"
         destinationVC.topSubType = "bypopularity"
         destinationVC.animeMangaTitle = K.VCTitle.animeVC
       case K.SegueIdentifiers.fromMangaToPopular:
-        destinationVC.topType = "manga"
+        destinationVC.topGenreType = "manga"
         destinationVC.topSubType = "bypopularity"
         destinationVC.animeMangaTitle = K.VCTitle.mangaVC
       default:
         print("Default")
       }
+    } else if let destinationVC = segue.destination as? GenresTableViewController {
+      if segue.identifier == K.SegueIdentifiers.fromAnimeToGenres {
+        destinationVC.animeMangaID = K.animeID
+      } else {
+        destinationVC.animeMangaID = K.mangaID
+      }   
     }
   }
-  
-  
 }
