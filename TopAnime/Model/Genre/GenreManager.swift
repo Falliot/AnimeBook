@@ -32,23 +32,49 @@ struct GenreManager {
         self.delegate?.didFailWithError(error!)
         return
       }
-
-      if let safeData = data {
-        if let genre = self.decodeJSON(genreData: safeData) {
-          print(genre)
-          self.delegate?.didFetchGenreData(genre)
+      
+      guard let safeData = data else {
+        self.delegate?.didFailWithError(error!)
+        return
+      }
+      
+      
+      if genreType == K.animeID {
+        guard let genreAnime = self.decodeAnimeJSON(genreAnimeData: safeData) else {
+          self.delegate?.didFailWithError(error!)
+          return
         }
+        self.delegate?.didFetchGenreData(genreAnime)
+      } else {
+        guard let genreManga = self.decodeMangaJSON(genreMangaData: safeData) else {
+          self.delegate?.didFailWithError(error!)
+          return
+        }
+        self.delegate?.didFetchGenreData(genreManga)
       }
     }
     task.resume()
   }
   
-  private func decodeJSON(genreData: Data) -> GenreModel? {
+  private func decodeAnimeJSON(genreAnimeData: Data) -> GenreModel? {
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .iso8601
     do {
-      let decodedData = try decoder.decode(GenreData.self, from: genreData)
-      let genre = GenreModel(genreAnime: decodedData.anime)
+      let decodedData = try decoder.decode(GenreData.self, from: genreAnimeData)
+      let genre = GenreModel(genreAnime: decodedData.anime!)
+      return genre
+    } catch {
+      delegate?.didFailWithError(error)
+      return nil
+    }
+  }
+  
+  private func decodeMangaJSON(genreMangaData: Data) -> GenreModel? {
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
+    do {
+      let decodedData = try decoder.decode(GenreData.self, from: genreMangaData)
+      let genre = GenreModel(genreAnime: decodedData.manga!)
       return genre
     } catch {
       delegate?.didFailWithError(error)

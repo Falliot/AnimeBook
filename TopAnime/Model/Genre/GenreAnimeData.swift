@@ -9,7 +9,8 @@
 import Foundation
 
 struct GenreData: Decodable {
-  let anime: [Anime]
+  let anime: [Anime]?
+  let manga: [Anime]?
 }
 
 struct Anime: Decodable {
