@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import youtube_ios_player_helper
 
 class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   
@@ -35,7 +36,11 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   @IBOutlet weak var otherNamesLbl: UILabel!
   @IBOutlet weak var airedLbl: UILabel!
   
-  var parentAnime: TopAnimeManga?
+  @IBOutlet weak var youTubePlayer: YTPlayerView!
+  
+  var parentTop: TopAnimeManga?
+  var parentGenre: Anime?
+  var topGenreId = String()
   
   var anime: AnimeModel?
   var animeManager = AnimeManager()
@@ -43,11 +48,23 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   var manga: MangaModel?
   var mangaManager = MangaManager()
   
-  var id = String()
-  
-  var url : URL? {
-    return URL(string: parentAnime!.imageURL)
+  var url: URL? {
+    if topGenreId == K.topID {
+      return URL(string: parentTop!.imageURL)
+    } else {
+      return URL(string: parentGenre!.imageURL)
+    }
   }
+  
+  var animeMangaId : String {
+    if topGenreId == K.topID {
+     return "\(parentTop!.id)"
+    } else {
+     return "\(parentGenre!.id)"
+    }
+  }
+  
+  var id = String()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,9 +72,8 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
     animeManager.delegate = self
     mangaManager.delegate = self
     
-    
     animeMangaRequest()
-    imgView.kf.setImage(with: url)
+    imgView.kf.setImage(with: url!)
     setupBackground()
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(_:)))
@@ -68,9 +84,8 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
   
   private func animeMangaRequest() {
     showActivityIndicator()
-    
     if id == K.animeID {
-      animeManager.performRequest(animeID: "\(parentAnime!.id)") { (result) in
+      animeManager.performRequest(animeID: animeMangaId) { (result) in
         switch result {
         case .success(let animeModel):
           self.animeManager.delegate?.didFetchAnimeData(animeModel)
@@ -82,7 +97,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
         }
       }
     } else {
-      mangaManager.performRequest(mangaID: "\(parentAnime!.id)", mangaRequest: "") { (result) in
+      mangaManager.performRequest(mangaID: animeMangaId, mangaRequest: "") { (result) in
         switch result {
         case .success(let mangaModel):
           self.mangaManager.delegate?.didFetchMangaData(mangaModel)
@@ -114,6 +129,14 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       otherNamesLbl.text = anime?.animeOtherNames.joined(separator: ", ")
       airedLbl.text = anime!.animeAired
       
+      if anime?.animeTrailer != "No Trailer" {
+        let trailerId = anime!.animeTrailer.subString(from: 30, to: 41)
+        let playvarsDic = ["controls": 1, "playsinline": 1, "autohide": 1, "showinfo": 1, "autoplay": 1, "modestbranding": 1]
+        youTubePlayer.load(withVideoId: trailerId, playerVars: playvarsDic)
+      } else {
+        youTubePlayer.isHidden = true
+      }
+      
       episodesVolumesLbl.text = "EPISODES"
       premieredChaptersLbl.text = "SEASON"
       studioAuthorLbl.text = "STUDIO"
@@ -133,6 +156,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       engNameLbl.text = manga?.mangaEnglishName
       otherNamesLbl.text = manga?.mangaOtherNames.joined(separator: ", ")
       airedLbl.text = manga?.mangaPublished
+      youTubePlayer.isHidden = true
       
       episodesVolumesLbl.text = "VOLUMES"
       premieredChaptersLbl.text = "CHAPTERS"

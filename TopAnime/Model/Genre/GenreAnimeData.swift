@@ -16,9 +16,11 @@ struct GenreData: Decodable {
 struct Anime: Decodable {
   let name: String
   let imageURL: String
+  let id: Int
   
   enum CodingKeys: String, CodingKey {
     case name = "title"
     case imageURL = "image_url"
+    case id = "mal_id"
   }
 }

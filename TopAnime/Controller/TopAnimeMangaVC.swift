@@ -80,8 +80,12 @@ class TopTableViewController: UITableViewController {
      if let destination = segue.destination as? DetailsViewController {
        let index = tableView.indexPathForSelectedRow?.row
        
-      destination.parentAnime = animeMangaList[index!]
-       
+      if topGenreId == K.topID {
+        destination.parentTop = animeMangaList[index!]
+      } else {
+        destination.parentGenre = genreList[index!]
+      }
+  
        if animeMangaTitle == K.VCTitle.animeVC {
          destination.id = K.animeID
          destination.title = "Anime"
@@ -89,6 +93,7 @@ class TopTableViewController: UITableViewController {
          destination.id = K.mangaID
          destination.title = "Manga"
        }
+      destination.topGenreId = topGenreId
      }
    }
   

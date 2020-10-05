@@ -21,7 +21,7 @@ struct MangaData: Decodable {
   let chapters: Int?
   let published: Aired
   let rank: Int
-  let score: Double
+  let score: Double?
   let popularity: Int
   let details: String
   let genres: [Genre]?

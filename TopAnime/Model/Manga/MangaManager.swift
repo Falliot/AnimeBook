@@ -92,8 +92,13 @@ struct MangaManager {
       chapters = " - "
     }
     
-    var score: String {
-      return String(format: "%.2f", mangaData.score)
+    var score = String()
+    
+  
+    if mangaData.score != nil {
+      score = String(format: "%.2f", mangaData.score!)
+    } else {
+      score = " - "
     }
     
     var popularity : String {

@@ -510,6 +510,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="xaN-52-9yW"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATq-ig-KNF" customClass="YTPlayerView">
+                                                <rect key="frame" x="25" y="497.5" width="364" height="190"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="190" id="4gm-2D-6YX"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Br7-WX-r1P" firstAttribute="top" secondItem="txx-mK-gSJ" secondAttribute="top" constant="8" id="07o-Hu-UDU"/>
@@ -519,11 +526,13 @@
                                             <constraint firstItem="7NJ-rX-GnT" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="BHI-fr-X8M"/>
                                             <constraint firstItem="7NJ-rX-GnT" firstAttribute="top" secondItem="Br7-WX-r1P" secondAttribute="bottom" priority="900" constant="20" id="F2T-hs-bK7"/>
                                             <constraint firstItem="kPq-zu-Ars" firstAttribute="top" secondItem="Nes-pv-6ae" secondAttribute="bottom" constant="10" id="Idx-Lw-vS7"/>
+                                            <constraint firstAttribute="trailing" secondItem="ATq-ig-KNF" secondAttribute="trailing" constant="25" id="PWz-zj-UVi"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="top" secondItem="Br7-WX-r1P" secondAttribute="bottom" priority="900" constant="20" id="Qyv-rB-FN5"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="height" secondItem="7NJ-rX-GnT" secondAttribute="height" id="WvL-f9-V7h"/>
                                             <constraint firstAttribute="trailing" secondItem="Nes-pv-6ae" secondAttribute="trailing" constant="10" id="YSB-UA-aVl"/>
                                             <constraint firstItem="nM6-S6-Xwz" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="45" id="aWI-pt-FcV"/>
                                             <constraint firstItem="EL1-Nh-0nZ" firstAttribute="top" secondItem="Za8-c3-3Bb" secondAttribute="bottom" constant="20" id="fLu-Ls-qgu"/>
+                                            <constraint firstItem="ATq-ig-KNF" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="25" id="hBu-Pg-0rY"/>
                                             <constraint firstAttribute="height" constant="1000" id="hbC-5r-YpN"/>
                                             <constraint firstItem="kPq-zu-Ars" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="45" id="kjb-aD-Aqo"/>
                                             <constraint firstAttribute="trailing" secondItem="EL1-Nh-0nZ" secondAttribute="trailing" constant="10" id="lTh-xA-RHD"/>
@@ -531,6 +540,7 @@
                                             <constraint firstAttribute="trailing" secondItem="nM6-S6-Xwz" secondAttribute="trailing" constant="45" id="p4j-lL-aii"/>
                                             <constraint firstItem="Za8-c3-3Bb" firstAttribute="leading" secondItem="7NJ-rX-GnT" secondAttribute="trailing" constant="10" id="phd-dZ-9ln"/>
                                             <constraint firstItem="Nes-pv-6ae" firstAttribute="top" secondItem="nM6-S6-Xwz" secondAttribute="bottom" constant="10" id="sZ8-P7-RCJ"/>
+                                            <constraint firstItem="ATq-ig-KNF" firstAttribute="top" secondItem="kPq-zu-Ars" secondAttribute="bottom" constant="10" id="wRM-03-J66"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Br7-WX-r1P" secondAttribute="trailing" constant="20" symbolic="YES" id="xJ9-yQ-Huw"/>
                                             <constraint firstItem="Br7-WX-r1P" firstAttribute="leading" secondItem="txx-mK-gSJ" secondAttribute="leading" constant="10" id="z9X-LA-DKP"/>
                                             <constraint firstItem="nM6-S6-Xwz" firstAttribute="top" secondItem="EL1-Nh-0nZ" secondAttribute="bottom" constant="20" id="zl7-R4-Lc0"/>
@@ -548,7 +558,6 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="sZW-gJ-WZz"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="URp-Rh-sMd" firstAttribute="trailing" secondItem="DiL-5U-INO" secondAttribute="trailing" id="BBf-7S-szG"/>
                             <constraint firstItem="URp-Rh-sMd" firstAttribute="bottom" secondItem="DiL-5U-INO" secondAttribute="bottom" id="C3W-h7-QZ2"/>
@@ -578,6 +587,7 @@
                         <outlet property="synopisLbl" destination="EL1-Nh-0nZ" id="JAH-4Z-arR"/>
                         <outlet property="titleLbl" destination="Br7-WX-r1P" id="fA2-bR-agV"/>
                         <outlet property="typeLbl" destination="54o-Hn-AY4" id="W3a-p4-ydh"/>
+                        <outlet property="youTubePlayer" destination="ATq-ig-KNF" id="FU3-Vq-4un"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTF-XX-iX4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

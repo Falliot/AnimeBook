@@ -50,10 +50,12 @@ class GenresTableViewController: UITableViewController {
         destinationVC.topGenreType = K.animeID
         destinationVC.animeMangaGenreId = String(index)
         destinationVC.topGenreId = K.genreID
+        destinationVC.animeMangaTitle = K.VCTitle.animeVC
       } else {
         destinationVC.topGenreType = K.mangaID
         destinationVC.animeMangaGenreId = String(index)
         destinationVC.topGenreId = K.genreID
+        destinationVC.animeMangaTitle = K.VCTitle.mangaVC
       }
     }
   }
