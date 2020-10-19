@@ -20,7 +20,7 @@ extension UIButton {
     let totalHeight = imageViewSize.height + titleLabelSize.height + padding
     
     self.imageEdgeInsets = UIEdgeInsets(
-      top: -(totalHeight - imageViewSize.height),
+      top: 0,
       left: 0.0,
       bottom: 0.0,
       right: -titleLabelSize.width

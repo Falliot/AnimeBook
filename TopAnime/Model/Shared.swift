@@ -35,7 +35,7 @@ struct Utility {
     button.clipsToBounds = true
     button.layer.cornerRadius = button.frame.width/10
     button.layer.borderColor = UIColor.white.cgColor
-    button.layer.borderWidth = 1.0
+    button.layer.borderWidth = 2.0
     
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named:imageName), for: .normal)

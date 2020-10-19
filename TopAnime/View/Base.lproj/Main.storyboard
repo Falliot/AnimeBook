@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="VXm-Yk-iIn">
             <objects>
-                <tabBarController id="3Dp-on-zjY" sceneMemberID="viewController">
+                <tabBarController id="3Dp-on-zjY" customClass="TabBarController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3PM-bh-xG1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -40,54 +40,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="hRS-jN-XjN">
-                                <rect key="frame" x="117" y="397.5" width="180" height="201"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hRS-jN-XjN">
+                                <rect key="frame" x="20" y="138" width="374" height="625"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-S5-dAp">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="47"/>
-                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="30"/>
-                                        <state key="normal" title="Top Rated">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="topRatedBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="5xv-CF-Okj"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-7h-Xby">
-                                        <rect key="frame" x="0.0" y="77" width="180" height="47"/>
-                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="30"/>
-                                        <state key="normal" title="Top Popularity">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="topPopularityBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="Dpn-f8-lMI"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f6-gK-f3H">
-                                        <rect key="frame" x="0.0" y="154" width="86" height="47"/>
-                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="30"/>
-                                        <state key="normal" title="Genres">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="genresBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="Bzd-Vk-3iQ"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gIw-Sb-dWi">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="195"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-7h-Xby">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="195"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
+                                                <state key="normal" title="Top Popularity">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="topPopularityBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="Dpn-f8-lMI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-S5-dAp">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="195"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
+                                                <state key="normal" title="Top Rated">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="topRatedBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="5xv-CF-Okj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="WGs-7h-Xby" firstAttribute="height" secondItem="gIw-Sb-dWi" secondAttribute="height" id="QhY-Mp-D1C"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5R4-Kw-aAC">
+                                        <rect key="frame" x="0.0" y="215" width="374" height="195"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f6-gK-f3H">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="195"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
+                                                <state key="normal" title="Airing">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3R-kJ-sId">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="195"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
+                                                <state key="normal" title="Movies">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-WM-H67">
+                                        <rect key="frame" x="0.0" y="430" width="374" height="195"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbk-pZ-dSd">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="195"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
+                                                <state key="normal" title="Genres">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="genresBtnPressed:" destination="uYD-8S-Yhz" eventType="touchUpInside" id="eUL-Fd-34o"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEZ-ZT-wNN">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="195"/>
+                                                <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="25"/>
+                                                <state key="normal" title="TV">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.9739323258" green="0.454769969" blue="0.062217585739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hRS-jN-XjN" firstAttribute="centerX" secondItem="q7t-xr-jWE" secondAttribute="centerX" id="KO4-1e-caj"/>
-                            <constraint firstItem="hRS-jN-XjN" firstAttribute="centerY" secondItem="q7t-xr-jWE" secondAttribute="centerY" constant="50" id="s2b-dR-IME"/>
+                            <constraint firstItem="2a9-Dt-75c" firstAttribute="trailing" secondItem="hRS-jN-XjN" secondAttribute="trailing" constant="20" id="Kqs-9w-MAf"/>
+                            <constraint firstItem="hRS-jN-XjN" firstAttribute="leading" secondItem="2a9-Dt-75c" secondAttribute="leading" constant="20" id="dFW-AJ-bTo"/>
+                            <constraint firstItem="2a9-Dt-75c" firstAttribute="bottom" secondItem="hRS-jN-XjN" secondAttribute="bottom" constant="50" id="oTY-hx-Cgo"/>
+                            <constraint firstItem="hRS-jN-XjN" firstAttribute="top" secondItem="2a9-Dt-75c" secondAttribute="top" constant="50" id="pYO-lT-q5j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2a9-Dt-75c"/>
                     </view>
                     <navigationItem key="navigationItem" id="zXB-F6-5aL"/>
                     <connections>
-                        <outlet property="genres" destination="2f6-gK-f3H" id="KBn-a6-wex"/>
-                        <outlet property="topPopularityBtn" destination="WGs-7h-Xby" id="2pX-oH-5kA"/>
-                        <outlet property="topRatedBtn" destination="5DT-S5-dAp" id="hja-e1-SWQ"/>
+                        <outlet property="TVBtn" destination="oEZ-ZT-wNN" id="QhA-ix-1Dz"/>
+                        <outlet property="airingBtn" destination="2f6-gK-f3H" id="dOt-my-ni9"/>
+                        <outlet property="byPopularityBtn" destination="WGs-7h-Xby" id="2Kw-ub-z6p"/>
+                        <outlet property="genresBtn" destination="Kbk-pZ-dSd" id="A21-lS-1pL"/>
+                        <outlet property="moviesBtn" destination="D3R-kJ-sId" id="4Vn-g2-oVj"/>
+                        <outlet property="topRatedBtn" destination="5DT-S5-dAp" id="Jqo-Kb-eFz"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromAnimeToRated" id="hK1-ke-3fu"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromAnimeToPopular" id="9qL-tl-Brj"/>
                         <segue destination="6Nh-co-7a6" kind="show" identifier="fromAnimeToGenres" id="5uY-Be-QCP"/>
@@ -150,8 +194,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="zfu-Y5-1ip"/>
                     <connections>
-                        <outlet property="genres" destination="eBP-bh-Zyq" id="bpu-py-3jP"/>
-                        <outlet property="topPopularityBtn" destination="z2c-EK-QtS" id="WVT-rO-5bi"/>
                         <outlet property="topRatedBtn" destination="M19-5M-kLl" id="ap1-kW-rX0"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromMangaToRated" id="pc8-Bm-GbF"/>
                         <segue destination="0hL-v6-7X4" kind="show" identifier="fromMangaToPopular" id="pX7-Sn-f48"/>
@@ -628,10 +670,10 @@
             </objects>
             <point key="canvasLocation" x="2141" y="-689"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="B5X-KG-4wV">
             <objects>
-                <viewController id="ElK-0L-VwM" sceneMemberID="viewController">
+                <viewController id="ElK-0L-VwM" customClass="SearchViewController" customModule="TopAnime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wgR-zD-bua">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -646,7 +688,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3aN-Yn-Qdu"/>
+        <segue reference="hK1-ke-3fu"/>
         <segue reference="5uY-Be-QCP"/>
     </inferredMetricsTieBreakers>
     <resources>
