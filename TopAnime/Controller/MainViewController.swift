@@ -10,14 +10,40 @@ import UIKit
 
 class MainViewController: UIViewController {
   
+  @IBOutlet weak var byPopularityBtn: UIButton!
   @IBOutlet weak var topRatedBtn: UIButton!
-  @IBOutlet weak var topPopularityBtn: UIButton!
-  @IBOutlet weak var genres: UIButton!
+  @IBOutlet weak var airingBtn: UIButton!
+  @IBOutlet weak var moviesBtn: UIButton!
+  @IBOutlet weak var genresBtn: UIButton!
+  @IBOutlet weak var TVBtn: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
+    if title == K.VCTitle.animeVC {
+      Utility.setupBackground(view: self.view, url: nil, image: "collage1")
+      setupAnimeButtons()
+    } else {
+      Utility.setupBackground(view: self.view, url: nil, image: "collage3")
+    }
+    navigationController?.navigationBar.isHidden = true
+  }
+  
+  private func setupAnimeButtons() {
+    Utility.attributedButtons(button: byPopularityBtn, imageName: "1", title: "By Popularity")
+    Utility.attributedButtons(button: topRatedBtn, imageName: "2", title: "Top Rated")
+    Utility.attributedButtons(button: airingBtn, imageName: "3", title: "Airing")
+    Utility.attributedButtons(button: moviesBtn, imageName: "4", title: "Movies")
+    Utility.attributedButtons(button: genresBtn, imageName: "5", title: "Genres")
+    Utility.attributedButtons(button: TVBtn, imageName: "6", title: "TV")
+    
+    byPopularityBtn.centerVertically()
+    topRatedBtn.centerVertically()
+    airingBtn.centerVertically()
+    moviesBtn.centerVertically()
+    genresBtn.centerVertically(padding: -25.0)
+    TVBtn.centerVertically()
+    
   }
   
   

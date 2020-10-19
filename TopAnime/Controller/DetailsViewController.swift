@@ -74,7 +74,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
     
     animeMangaRequest()
     imgView.kf.setImage(with: url!)
-    setupBackground()
+    Utility.setupBackground(view: self.view, url: url, image: "")
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(tapLabel(_:)))
     synopisLbl.addGestureRecognizer(tap)
@@ -120,7 +120,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       premieredLbl.text = anime?.animePremire
       episodesLbl.text = anime?.animeEpisodes
       scoreLbl.text = anime?.animeScore
-      rankLbl.text = "#" + "\(anime!.animeRank)"
+      rankLbl.text = anime!.animeRank
       genreLbl.text = anime?.animeGenre.joined(separator: ", ")
       studioLbl.text = anime?.animeStudio.joined(separator: ", ")
       synopisLbl.text = anime?.animeDetails
@@ -148,7 +148,7 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       premieredLbl.text = manga?.mangaChapters
       episodesLbl.text = manga?.mangaVolumes
       scoreLbl.text = manga?.mangaScore
-      rankLbl.text = "#" + "\(manga!.mangaRank)"
+      rankLbl.text = manga!.mangaRank
       genreLbl.text = manga?.mangaGenre.joined(separator: ", ")
       studioLbl.text = manga?.mangaAuthors.joined(separator: ", ")
       synopisLbl.text = manga?.mangaDetails
@@ -174,19 +174,6 @@ class DetailsViewController: UIViewController, ActivityIndicatorPresenter {
       }
     }
   }
-  
-  func setupBackground() {
-    let backgroundImg = UIImageView(frame: UIScreen.main.bounds)
-    backgroundImg.kf.setImage(with: url)
-    backgroundImg.contentMode = .scaleAspectFill
-    view.insertSubview(backgroundImg, at: 0)
-    
-    let blurEffect = UIBlurEffect(style: .dark)
-    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-    blurEffectView.frame = backgroundImg.frame
-    view.insertSubview(blurEffectView, at: 1)
-  }
-  
 }
 extension DetailsViewController: AnimeManagerDelegate {
   func didFetchAnimeData(_ animeModel: AnimeModel) {
