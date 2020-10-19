@@ -72,7 +72,7 @@ struct MangaManager {
     var volumes = String()
     var chapters = String()
     var englishTitle = String()
-    
+    var rank = String()
     
     if mangaData.englishName != nil {
       englishTitle = mangaData.englishName!
@@ -94,7 +94,6 @@ struct MangaManager {
     
     var score = String()
     
-  
     if mangaData.score != nil {
       score = String(format: "%.2f", mangaData.score!)
     } else {
@@ -105,7 +104,11 @@ struct MangaManager {
       return String(mangaData.popularity)
     }
     
-    let rank = "\(mangaData.rank)"
+    if mangaData.rank != nil {
+      rank = "#" + "\(mangaData.rank!)"
+    } else {
+      rank = " - "
+    }
     
     if mangaData.otherNames.count != 0 {
       otherNames = mangaData.otherNames

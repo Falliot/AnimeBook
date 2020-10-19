@@ -16,6 +16,7 @@ struct TopAnimeManga: Decodable {
   
   let id: Int
   let rank: Int
+  let type: String
   let title: String
   let url: String
   let imageURL: String
@@ -27,6 +28,7 @@ struct TopAnimeManga: Decodable {
   enum CodingKeys: String, CodingKey {
     case id = "mal_id"
     case rank
+    case type
     case title
     case url
     case imageURL = "image_url"

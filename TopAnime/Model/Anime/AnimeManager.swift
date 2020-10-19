@@ -67,6 +67,7 @@ struct AnimeManager {
     var otherNames = [String]()
     var genres = [String]()
     var studios = [String]()
+    var rank = String()
     
     let aired = animeData.aired.string
     
@@ -91,7 +92,11 @@ struct AnimeManager {
       return String(animeData.popularity)
     }
     
-    let rank = "\(animeData.rank)"
+    if animeData.rank != nil {
+      rank = "#" + "\(animeData.rank!)"
+    } else {
+      rank = " - "
+    }
     
     if animeData.episodes != nil {
       episodes = "\(animeData.episodes!)"

@@ -22,7 +22,7 @@ class AnimeCell: UITableViewCell {
     }
   
   func setupAnimeCell(_ anime: TopAnimeManga) {
-    self.nameLbl?.text = anime.title
+    self.nameLbl?.text = anime.title + " (\(anime.type))"
     self.imgView.kf.setImage(with: URL(string: anime.imageURL))
   }
   

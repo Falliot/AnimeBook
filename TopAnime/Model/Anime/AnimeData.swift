@@ -26,7 +26,7 @@ struct AnimeData: Decodable {
   
   let genre: [Genre]?
   let studio: [Studio]?
-  let rank: Int
+  let rank: Int?
   let aired: Aired
   
   enum CodingKeys: String, CodingKey {
